@@ -2,4 +2,4 @@ repositories:
   catkin:
     type: git
     url: https://github.com/LCAS/topological_navigation.git
-    version: humble-devel
+    version: humble-dev
