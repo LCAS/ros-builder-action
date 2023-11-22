@@ -22,7 +22,7 @@ on:
 
 jobs:
   robot:
-    uses: ubi-agni/ros-builder-action/.github/workflows/build.yaml@main
+    uses: LCAS/ros-builder-action/.github/workflows/build.yaml@main
     with:
       ROS_SOURCES: 1-robot.repos
       DEB_DISTRO: ${{ inputs.DEB_DISTRO }}
@@ -31,7 +31,7 @@ jobs:
 
   desktop:
     needs: robot
-    uses: ubi-agni/ros-builder-action/.github/workflows/build.yaml@main
+    uses: LCAS/ros-builder-action/.github/workflows/build.yaml@main
     with:
       ROS_SOURCES: 2-desktop.repos
       DEB_DISTRO: ${{ inputs.DEB_DISTRO }}
@@ -40,7 +40,7 @@ jobs:
 
   desktop-full:
     needs: desktop
-    uses: ubi-agni/ros-builder-action/.github/workflows/build.yaml@main
+    uses: LCAS/ros-builder-action/.github/workflows/build.yaml@main
     with:
       ROS_SOURCES: 3-desktop-full.repos
       DEB_DISTRO: ${{ inputs.DEB_DISTRO }}
@@ -50,7 +50,7 @@ jobs:
   deploy:
     needs: desktop-full
     if: always() && ( inputs.PUSH_MODE != 'skip' ) && vars.DEPLOY_URL
-    uses: ubi-agni/ros-builder-action/.github/workflows/deploy.yaml@main
+    uses: LCAS/ros-builder-action/.github/workflows/deploy.yaml@main
     with:
       CONTENT_MODE: replace
       PUSH_MODE: ${{ inputs.PUSH_MODE || vars.PUSH_MODE }}

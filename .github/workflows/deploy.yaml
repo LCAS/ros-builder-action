@@ -93,7 +93,7 @@ jobs:
       - name: Deploy to ${{ inputs.DEPLOY_URL || vars.DEPLOY_URL }}
         run: |
           echo "Cloning and running deploy script"
-          git clone --branch main --depth 1 https://github.com/ubi-agni/ros-builder-action.git $RUNNER_TEMP/ros-builder-action
+          git clone --branch main --depth 1 https://github.com/LCAS/ros-builder-action.git $RUNNER_TEMP/ros-builder-action
           $RUNNER_TEMP/ros-builder-action/src/scripts/generic.sh $RUNNER_TEMP/ros-builder-action/src/scripts/deploy.sh
         env:
           DEPLOY_URL: ${{ inputs.DEPLOY_URL || vars.DEPLOY_URL }}

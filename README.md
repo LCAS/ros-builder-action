@@ -7,7 +7,7 @@ If you want any other packages to be included in the repository, please open an 
 
 ### Interactive build workflow
 
-For building a ROS distro it is recommended to use the high-level [interactive.yaml](https://github.com/ubi-agni/ros-builder-action/actions/workflows/interactive.yaml) workflow.
+For building a ROS distro it is recommended to use the high-level [interactive.yaml](https://github.com/LCAS/ros-builder-action/actions/workflows/interactive.yaml) workflow.
 This manually triggered workflow builds all packages from the given source(s) and provides the resulting `.debs` as an artifact. Optionally, the `.debs` can be [deployed to a github repo](#where-to-deploy). However, using github for this purpose is not recommended (slow and size limitations). Better use a dedicated repository server like [aptly](https://www.aptly.info/) or [reprepro](https://wiki.debian.org/SettingUpSignedAptRepositoryWithReprepro). The [`reprepro-import.sh`](reprepro-import.sh) script helps with the latter.
 
 ### What to build?
@@ -40,14 +40,14 @@ A simple usage example looks like this:
 ```yaml
 jobs:
   build:
-    uses: ubi-agni/ros-builder-action/.github/workflows/build.yaml@main
+    uses: LCAS/ros-builder-action/.github/workflows/build.yaml@main
     with:
       ROS_SOURCES: '*.repos'
 
   deploy:
     needs: build
     if: always()
-    uses: ubi-agni/ros-builder-action/.github/workflows/deploy.yaml@main
+    uses: LCAS/ros-builder-action/.github/workflows/deploy.yaml@main
     with:
       DEPLOY_URL: ${{ vars.DEPLOY_URL || 'self' }}
       TOKEN: ${{ secrets.GITHUB_TOKEN }}                  # used for own repo

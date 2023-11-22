@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ubi-agni/ros-builder-action.git"
+    "url": "git+https://github.com/LCAS/ros-builder-action.git"
   },
   "keywords": [
     "github",
@@ -21,9 +21,9 @@
   "author": "Robert Haschke",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/ubi-agni/ros-builder-action/issues"
+    "url": "https://github.com/LCAS/ros-builder-action/issues"
   },
-  "homepage": "https://github.com/ubi-agni/ros-builder-action",
+  "homepage": "https://github.com/LCAS/ros-builder-action",
   "dependencies": {
     "@actions/core": "^1.10.1"
   }
