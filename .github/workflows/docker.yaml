@@ -1,9 +1,9 @@
 name: docker
 
 on:
-  schedule:
+  #schedule:
     # 6 AM UTC every Sunday
-    - cron: "0 6 * * 6"
+  #  - cron: "0 6 * * 6"
   workflow_dispatch:
   push:
     branches:
