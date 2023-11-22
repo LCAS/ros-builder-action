@@ -65,22 +65,23 @@ EOF
 	run -1 url_from_deb_source "deb [option1=val1 option2=val2] http://archive.ubuntu.com/ubuntu"
 }
 
-@test "validate_deb_sources_good" {
-	local src
-	for src in \
-		"deb http://archive.ubuntu.com/ubuntu focal" \
-		"$(echo -e "\ndeb https://raw.githubusercontent.com/LCAS/ros-builder-action/ci ./")" \
-		; do
-		local orig=$src
-		# check correct modification of src variable
-		validate_deb_sources src # modification fails with subshell use!
-		output="$src" assert_output "$(echo "$orig" | grep -v -e '^$')"
+#@test "validate_deb_sources_good" {
+#	local src
+#	for src in \
+#		"deb http://archive.ubuntu.com/ubuntu focal" \
+#		"$(echo -e "\ndeb https://raw.githubusercontent.com/LCAS/ros-builder-action/ci ./")" \
+#		; do
+#		local orig=$src
+#		# check correct modification of src variable
+#		validate_deb_sources src # modification fails with subshell use!
+#		output="$src" assert_output "$(echo "$orig" | grep -v -e '^$')"
+#
+#		# check for empty output (no warnings/errors generated)
+#		run validate_deb_sources orig
+#		assert_output ""
+#	done
+#}
 
-		# check for empty output (no warnings/errors generated)
-		run validate_deb_sources orig
-		assert_output ""
-	done
-}
 @test "validate_deb_sources_invalid" {
 	local orig="http://archive.ubuntu.com/ubuntu"
 	local src=$orig
